@@ -1,4 +1,4 @@
-# PyTorch-LerarningRate-WarmUp
+# PyTorch-Learning-Rate-WarmUp
 
 ```python
 class LearningRateWarmUP(object):
