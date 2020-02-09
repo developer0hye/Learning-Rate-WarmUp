@@ -24,12 +24,12 @@ v = torch.zeros(10)
 optim = torch.optim.SGD([v], lr=lr)
 scheduler_cosine = torch.optim.lr_scheduler.CosineAnnealingLR(optim, args.iters)
 scheduler = LearningRateWarmUP(optimizer=optim, target_iteration=10, target_lr=0.01, after_scheduler=scheduler_cosine)
-for epoch in range(1, 20):
+for iter in range(1, 20):
     optim.zero_grad()
     optim.step()
 
-    scheduler.step(epoch)
-    print(epoch, optim.param_groups[0]['lr'])
+    scheduler.step(iter)
+    print(iter, optim.param_groups[0]['lr'])
 ```
 
 ## Results
