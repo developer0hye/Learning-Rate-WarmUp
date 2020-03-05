@@ -2,7 +2,6 @@
 
 <img src="Figure.png" width="50%">
 
-
 ## Implementation
 
 ```python
