@@ -1,5 +1,10 @@
 # PyTorch-Learning-Rate-WarmUp
 
+<img src="Figure.png" width="50%">
+
+
+## Implementation
+
 ```python
 import torch
 import matplotlib.pyplot as plt
