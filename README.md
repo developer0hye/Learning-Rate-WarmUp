@@ -1,6 +1,6 @@
 # PyTorch-Learning-Rate-WarmUp
 
-<img src="Figure.png" width="50%">
+![image](https://user-images.githubusercontent.com/35001605/125312714-7d6b6f80-e36f-11eb-9638-67e77ae6b94c.png)
 
 ## Implementation
 
@@ -33,7 +33,7 @@ class LearningRateWarmUP(object):
 if __name__ == '__main__':
     v = torch.zeros(10)
     lr = 1e-2
-    total_iter = 20
+    total_iter = 100
     warmup_iter = 10
 
     optim = torch.optim.SGD([v], lr=lr)
@@ -52,40 +52,15 @@ if __name__ == '__main__':
         optim.zero_grad()
         optim.step()
 
+        scheduler.step(iter)
+        
         x_iter.append(iter)
         y_lr.append(optim.param_groups[0]['lr'])
-        
-        scheduler.step(iter)
-
+    
     plt.plot(x_iter, y_lr, 'b')
     plt.legend(['learning rate'])
     plt.xlabel('iteration')
     plt.ylabel('learning rate')
     plt.show()
 
-```
-
-## Results
-
-```
-iter:  1  ,lr:  0.001
-iter:  2  ,lr:  0.002
-iter:  3  ,lr:  0.003
-iter:  4  ,lr:  0.004
-iter:  5  ,lr:  0.005
-iter:  6  ,lr:  0.006
-iter:  7  ,lr:  0.007000000000000001
-iter:  8  ,lr:  0.008
-iter:  9  ,lr:  0.009
-iter:  10  ,lr:  0.01
-iter:  11  ,lr:  0.009755282581475769
-iter:  12  ,lr:  0.009045084971874737
-iter:  13  ,lr:  0.007938926261462366
-iter:  14  ,lr:  0.006545084971874737
-iter:  15  ,lr:  0.005
-iter:  16  ,lr:  0.003454915028125263
-iter:  17  ,lr:  0.0020610737385376348
-iter:  18  ,lr:  0.0009549150281252633
-iter:  19  ,lr:  0.00024471741852423234
-iter:  20  ,lr:  0.0
 ```
