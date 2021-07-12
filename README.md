@@ -27,7 +27,7 @@ class LearningRateWarmUP(object):
             self.after_scheduler.step(cur_iteration-self.warmup_iteration)
     
     def load_state_dict(self, state_dict):
-        self.optimizer.load_state_dict(state_dict)
+        self.after_scheduler.load_state_dict(state_dict)
 
 if __name__ == '__main__':
     v = torch.zeros(10)
