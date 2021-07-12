@@ -14,6 +14,7 @@ class LearningRateWarmUP(object):
         self.warmup_iteration = warmup_iteration
         self.target_lr = target_lr
         self.after_scheduler = after_scheduler
+        self.step(1)
 
     def warmup_learning_rate(self, cur_iteration):
         warmup_lr = self.target_lr*float(cur_iteration)/float(self.warmup_iteration)
@@ -46,7 +47,6 @@ if __name__ == '__main__':
     y_lr = [0.]
 
     for iter in range(1, total_iter+1):
-        scheduler.step(iter)
         print("iter: ", iter, " ,lr: ", optim.param_groups[0]['lr'])
 
         optim.zero_grad()
@@ -54,6 +54,8 @@ if __name__ == '__main__':
 
         x_iter.append(iter)
         y_lr.append(optim.param_groups[0]['lr'])
+        
+        scheduler.step(iter)
 
     plt.plot(x_iter, y_lr, 'b')
     plt.legend(['learning rate'])
